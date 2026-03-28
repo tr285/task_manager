@@ -1,0 +1,16 @@
+name: task-manager-openenv
+description: Real-world task scheduling environment
+
+observation:
+  type: Observation
+
+action:
+  type: Action
+
+reward:
+  type: float
+
+tasks:
+  - easy
+  - medium
+  - hard
