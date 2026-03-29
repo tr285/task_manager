@@ -1,23 +1,18 @@
 from pydantic import BaseModel
 from typing import List
-class Task (BaseModel):
+
+class Task(BaseModel):
     id: int
-    priority :int
-    deadlinr :int
-    duration :int
-    complete :bool
+    priority: int
+    deadline: int
+    duration: int
+    completed: bool
 
-    class Obeservation (BaseModel):
-      time:int
-      tasks:List[Task]
-      complete:int
-      missed: int
+class Observation(BaseModel):
+    time: int
+    tasks: List[Task]
+    completed: int
+    missed: int
 
-      class Action (BaseModel):
-        task_id : int
-        
-      class Reward(BaseModel):
-        value :float
-        
-
-
+class Action(BaseModel):
+    task_id: int

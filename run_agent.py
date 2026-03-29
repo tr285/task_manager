@@ -16,9 +16,10 @@ while True:
     max_p = -1
 
     for t in tasks:
-        if not t.completed and t.priority > max_p:
-            best = t
-            max_p = t.priority
+        if not t.completed:
+            if t.priority > max_p:
+                max_p = t.priority
+                best = t
 
     if best is None:
         break

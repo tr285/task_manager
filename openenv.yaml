@@ -1,5 +1,4 @@
 name: task-manager-openenv
-description: Real-world task scheduling environment
 
 observation:
   type: Observation

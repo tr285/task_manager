@@ -3,11 +3,21 @@ def grade_easy(env):
 
 
 def grade_medium(env):
-    total = sum(t.priority for t in env.tasks)
-    done = sum(t.priority for t in env.tasks if t.completed)
+    total = 0
+    done = 0
+
+    for t in env.tasks:
+        total += t.priority
+        if t.completed:
+            done += t.priority
+
     return done / total
 
 
 def grade_hard(env):
     score = env.completed - env.missed
-    return max(0.0, min(1.0, score / len(env.tasks)))
+
+    if score < 0:
+        score = 0
+
+    return score / len(env.tasks)

@@ -1,8 +1,5 @@
 import random
-from models import Action
-from models import Obeservation
-from models import reward
-from models import Task
+from models import Task, Observation, Action
 
 class TaskManagerEnv:
 
@@ -43,14 +40,14 @@ class TaskManagerEnv:
         for t in self.tasks:
             if t.id == action.task_id and not t.completed:
                 t.duration -= 1
-                reward += 1  # partial progress reward
+                reward += 1   # partial progress
 
                 if t.duration <= 0:
                     t.completed = True
                     self.completed += 1
                     reward += t.priority * 2
 
-        # penalty
+        # penalty for missed
         for t in self.tasks:
             if not t.completed and self.time > t.deadline:
                 t.completed = True
