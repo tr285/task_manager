@@ -1,5 +1,8 @@
 import random
-from models import Task, Observation, Action
+from models import Action
+from models import Obeservation
+from models import reward
+from models import Task
 
 class TaskManagerEnv:
 

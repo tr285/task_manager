@@ -4,6 +4,6 @@ WORKDIR /app
 
 COPY . .
 
-RUN pip install -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
-CMD ["python", "run_agent.py"]
+CMD ["python", "app.py"]
