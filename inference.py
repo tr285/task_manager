@@ -3,6 +3,7 @@ from grader import grade_easy, grade_medium, grade_hard
 from models import Action
 
 def run_agent(difficulty: str, seed: int = 42):
+    print(f"[START] task={difficulty}", flush=True)
     env = MiniGameEnv(difficulty=difficulty)
     obs = env.reset(seed=seed)
     
@@ -21,23 +22,24 @@ def run_agent(difficulty: str, seed: int = 42):
             break # Reached or some issue
             
         obs, reward, done, _ = env.step(action)
+        print(f"[STEP] step={env.steps_taken} reward={reward}", flush=True)
         
     return env
 
 if __name__ == "__main__":
-    print("Running baseline agent evaluation...")
+    print("Running baseline agent evaluation...", flush=True)
     
     # Easy
     env_easy = run_agent("easy")
     score_easy = grade_easy(env_easy)
-    print(f"Easy Score: {score_easy:.2f} | Steps: {env_easy.steps_taken}")
+    print(f"[END] task=easy score={score_easy:.2f} steps={env_easy.steps_taken}", flush=True)
     
     # Medium
     env_med = run_agent("medium")
     score_med = grade_medium(env_med)
-    print(f"Medium Score: {score_med:.2f} | Steps: {env_med.steps_taken}")
+    print(f"[END] task=medium score={score_med:.2f} steps={env_med.steps_taken}", flush=True)
     
     # Hard
     env_hard = run_agent("hard")
     score_hard = grade_hard(env_hard)
-    print(f"Hard Score: {score_hard:.2f} | Steps: {env_hard.steps_taken}")
+    print(f"[END] task=hard score={score_hard:.2f} steps={env_hard.steps_taken}", flush=True)
