@@ -1,0 +1,36 @@
+name: grid-minigame-openenv
+version: "1.0"
+description: "Grid-based navigation RL environment"
+entry_point: "app:app"
+sdk: "docker"
+port: 7860
+
+observation:
+  type: Observation
+
+action:
+  type: Action
+
+reward:
+  type: float
+
+endpoints:
+  reset: /reset
+  step: /step
+  state: /state
+
+tasks:
+  - id: easy
+    description: Reach the goal
+    max_score: 1.0
+    grader: grader:grade_easy
+
+  - id: medium
+    description: Reach the goal with fewer steps
+    max_score: 1.0
+    grader: grader:grade_medium
+
+  - id: hard
+    description: Reach the goal under a strict step limit
+    max_score: 1.0
+    grader: grader:grade_hard
